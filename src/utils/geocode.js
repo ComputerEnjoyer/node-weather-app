@@ -6,6 +6,7 @@ const key = process.env.POSITIONSTACK_KEY;
 const geocode = (address, callback) => {
   const url = `http://api.positionstack.com/v1/forward?access_key=${key}&query=${encodeURIComponent(address)}&limit=1`;
   request({ url, json: true, }, (error, { body }) => {
+    console.log('Positionstack: ', body);
     if (error) {
       callback('Unable to connect to Positionstack.');
     } else if (!body.data || body.data.length === 0) {

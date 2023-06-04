@@ -8,6 +8,7 @@ const forecast = (latitude, longitude, callback) => {
   const url = `http://api.weatherstack.com/current?access_key=${key}&query=${latitude},${longitude}`;
 
   request({ url, json: true, }, (error, { body }) => {
+    console.log('Weatherstack: ', body);
     if (error) {
       callback('Unable to connect to Weatherstack.');
     } else if (body.error) {
