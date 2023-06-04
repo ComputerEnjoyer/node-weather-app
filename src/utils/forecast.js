@@ -14,7 +14,7 @@ const forecast = (latitude, longitude, callback) => {
       callback('Unable to get weather data. Try another search.');
     } else {
       callback(undefined,
-        `${body.current.temperature}°C and ${body.current.weather_descriptions[0].toLowerCase()}`);
+        `${body.current.temperature}°C and ${body.current.weather_descriptions[0].toLowerCase()}. It feels like ${body.current.feelslike}°C`);
     }
   })
 }
