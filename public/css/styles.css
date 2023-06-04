@@ -1,0 +1,48 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  color: #333;
+  font-family: Arial, Helvetica, sans-serif;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1rem;
+
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+}
+
+main {
+  flex-grow: 1;
+}
+
+footer {
+  color: #888;
+  border-top: 1px solid #eee;
+  margin-top: 1rem;
+  padding: 1rem 0;
+}
+
+h1 {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+header a {
+  color: #888;
+  margin-right: 1rem;
+  text-decoration: none;
+}
+
+.portrait {
+  width: 250px;
+}
