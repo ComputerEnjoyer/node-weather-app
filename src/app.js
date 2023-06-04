@@ -34,15 +34,15 @@ app.get('', (req, res) => {
 
 app.get('/about', (req, res) => {
   res.render('about', {
-    title: 'About my balls',
-    name: 'Hairy Ballsagna',
+    title: 'About this here app',
+    name: "Geowfrix Fartington",
   });
 });
 
 app.get('/help', (req, res) => {
   res.render('help', {
     title: 'Help me!',
-    helpMessage: 'DIE! DIE! DIE!',
+    helpMessage: 'HOW DO I POST ON THE COMPUTER',
     name: 'Dookie Dingle',
   });
 });
@@ -84,7 +84,7 @@ app.get('/help/*', (req, res) => {
   res.render('404', {
     title: '404 not found',
     message: `We couldn't find that article.`,
-    name: 'Bonerman Sam',
+    name: 'Sam Gallows',
   });
 });
 
