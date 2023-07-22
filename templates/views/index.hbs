@@ -16,10 +16,13 @@
 <body>
   <main>
     {{>header}}
-    <form action="">
-      <input type="text" placeholder="Location">
-      <button type="submit">Search</button>
-    </form>
+    <div class="search-ui-wrapper">
+      <form action="">
+        <input type="text" placeholder="Location">
+        <button id="search">Search</button>
+      </form>
+      <button id="geolocate">My location</button>
+    </div>
     <p id="message-1"></p>
     <p id="message-2"></p>
   </main>

@@ -46,3 +46,7 @@ header a {
 .portrait {
   width: 250px;
 }
+
+.search-ui-wrapper {
+  display: flex;
+}

@@ -3,8 +3,8 @@ const dotenv = require('dotenv');
 dotenv.config({ path: './src/utils/.env' });
 const key = process.env.POSITIONSTACK_KEY;
 
-const geocode = (location, callback) => {
-  const url = `http://api.positionstack.com/v1/forward?access_key=${key}&query=${encodeURIComponent(location)}&limit=1`;
+const reverseGeocode = (lat, long, callback) => {
+  const url = `http://api.positionstack.com/v1/reverse?access_key=${key}&query=${lat},${long}&limit=1`;
   request({ url, json: true, }, (error, { body }) => {
     if (error) {
       callback('Unable to connect to Positionstack.');
@@ -16,4 +16,4 @@ const geocode = (location, callback) => {
   });
 }
 
-module.exports = geocode;
+module.exports = reverseGeocode;

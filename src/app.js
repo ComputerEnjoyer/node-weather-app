@@ -4,7 +4,7 @@ const hbs = require('hbs');
 
 const forecast = require('./utils/forecast');
 const geocode = require('./utils/geocode');
-
+const reverseGeocode = require('./utils/reverseGeocode');
 
 // Instantiate the server
 const app = express();
@@ -49,13 +49,13 @@ app.get('/help', (req, res) => {
 
 // You can serve JSON responses by simply sending back an object or an array of objects.
 app.get('/weather', (req, res) => {
-  if (!req.query.address) {
+  if (!req.query.location) {
     return res.send({
-      error: 'You must provide an address.'
+      error: 'You must provide a location.',
     });
   }
 
-  geocode(req.query.address, (error, { latitude, longitude, locality, country } = {}) => {
+  geocode(req.query.location, (error, { latitude, longitude, locality } = {}) => {
     if (error) {
       return res.send({
         error: error,
@@ -69,15 +69,35 @@ app.get('/weather', (req, res) => {
         });
       }
       res.send({
-        address: req.query.address,
         locality,
-        country,
         forecast: forecastData,
       });
     });
   });
 });
 
+app.get('/current', (req, res) => {
+  const { lat, long } = req.query;
+  reverseGeocode(lat, long, (error, { region } = {}) => {
+    if (error) {
+      return res.send({
+        error: error,
+      });
+    }
+
+    forecast(lat, long, (error, forecastData) => {
+      if (error) {
+        return res.send({
+          error: error,
+        });
+      }
+      res.send({
+        region,
+        forecast: forecastData
+      });
+    });
+  });
+});
 
 // Handle 404s. You can serve specific 404s based on directory.
 app.get('/help/*', (req, res) => {
