@@ -1,5 +1,5 @@
 const $weatherForm = document.querySelector('form');
-const $search = document.querySelector('#search');
+const $searchField = document.querySelector('#search-field');
 const $geolocate = document.querySelector('#geolocate');
 
 const messageOne = document.querySelector('#message-1');
@@ -11,11 +11,11 @@ messageTwo.textContent = '';
 
 $weatherForm.addEventListener('submit', (e) => {
   e.preventDefault();
+  const location = $searchField.value;
 
   messageOne.textContent = 'Loading...';
   messageTwo.textContent = '';
 
-  const location = $search.value;
   fetch(`/weather?location=${encodeURIComponent(location)}`).then((res) => {
     res.json().then((data) => {
       if (data.error) {
